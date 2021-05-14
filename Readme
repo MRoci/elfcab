@@ -1,0 +1,12 @@
+simple experiments with ELF file format.
+
+1.
+===
+injects shellcodes file into ELF executables using PT_NOTE to PT_LOAD technique.
+
+- appends the shellcode at the end of the file
+- converts the first PT_NOTE segment into PT_LOAD pointing to our shellcode with correct permissions
+- modifies the program entrypoint to execute our shellcode first
+- patches the shellcode to return to the original entrypoint
+
+x64 only, works with PIE
